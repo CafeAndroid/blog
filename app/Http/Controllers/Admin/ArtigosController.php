@@ -14,7 +14,11 @@ class ArtigosController extends Controller
      */
     public function index()
     {
-        return view('admin.artigos.index');
+        $breadcrumbs = json_encode([
+            ['titulo' => 'Home', 'url' => route('home')],
+            ['titulo' => 'Artigos', 'url' => ''],
+        ]);
+        return view('admin.artigos.index', compact('breadcrumbs'));
     }
 
     /**

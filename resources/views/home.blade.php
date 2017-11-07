@@ -3,8 +3,9 @@
 @section('content')
   <pagina col="12">
     <painel title="Dashboard">
+      <breadcrumb v-bind:lista={{$breadcrumbs}}></breadcrumb>
+      
       <div class="row">
-
         <div class="col-lg-3">
           <box title="Usuários" url="{{ url('/') }}" color="bg-purple" icon="fa-users">
             10
