@@ -18,7 +18,15 @@ class ArtigosController extends Controller
             ['titulo' => 'Home', 'url' => route('home')],
             ['titulo' => 'Artigos', 'url' => ''],
         ]);
-        return view('admin.artigos.index', compact('breadcrumbs'));
+
+        $artigos = json_encode([
+            ["id" => 1, "titulo" => "Aula de Java", "descricao" => "Descricao Java", "autor" => "Lucas", "data" => "22/08/2017"],
+            ["id" => 2, "titulo" => "Python com C++", "descricao" => "C++", "autor" => "Lucas", "data" => "22/08/2017"],
+            ["id" => 3, "titulo" => "Angular JS", "descricao" => "Descricao Angular Js", "autor" => "Lucas", "data" => "22/08/2017"],
+            ["id" => 4, "titulo" => "Delphi", "descricao" => "Descricao Delphi", "autor" => "Lucas", "data" => "22/08/2017"]
+        ]);
+
+        return view('admin.artigos.index', compact('breadcrumbs', 'artigos'));
     }
 
     /**
