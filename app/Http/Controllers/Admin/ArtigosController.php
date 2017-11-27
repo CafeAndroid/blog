@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Artigo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,13 +20,7 @@ class ArtigosController extends Controller
             ['titulo' => 'Artigos', 'url' => ''],
         ]);
 
-        $artigos = json_encode([
-            ["id" => 1, "titulo" => "Aula de Java", "descricao" => "Descricao Java", "autor" => "Lucas", "data" => "22/08/2017"],
-            ["id" => 2, "titulo" => "Python com C++", "descricao" => "C++", "autor" => "Lucas", "data" => "22/08/2017"],
-            ["id" => 3, "titulo" => "Angular JS", "descricao" => "Descricao Angular Js", "autor" => "Lucas", "data" => "22/08/2017"],
-            ["id" => 4, "titulo" => "Delphi", "descricao" => "Descricao Delphi", "autor" => "Lucas", "data" => "22/08/2017"]
-        ]);
-
+        $artigos = json_encode(Artigo::all('id', 'titulo', 'descricao', 'data_publicacao'));
         return view('admin.artigos.index', compact('breadcrumbs', 'artigos'));
     }
 
@@ -47,7 +42,21 @@ class ArtigosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $validacao = \Validator::make($data, [
+            'titulo'    => 'required',
+            'descricao' => 'required',
+            'conteudo' => 'required',
+            'data_publicacao' => 'required',
+        ]);
+
+        if($validacao->fails()){
+            return redirect()->back()->withErrors($validacao)->withInput();
+        }
+
+        Artigo::create($data);
+        return redirect()->back();
     }
 
     /**

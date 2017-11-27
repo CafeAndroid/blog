@@ -80,6 +80,7 @@
 
           if(this.buscar){
             return this.itens.filter(response => {
+              response = Object.values(response);
               for(let k = 0; k < response.length ; k++){
                 if((Object.values(response)[k] + "").toLowerCase().indexOf(this.buscar.toLowerCase()) >= 0){
                   return true;  

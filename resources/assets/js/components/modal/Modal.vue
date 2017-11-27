@@ -12,6 +12,9 @@
 			    <div class="modal-body">
 			      	<slot></slot>
 			  	</div>
+				<div class="modal-footer">
+					<slot name="botoes"></slot>
+				</div>
 			</div>
 		</div>
 	</div>

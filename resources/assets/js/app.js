@@ -19,7 +19,6 @@ Vue.use(Vuex);
 /**
  * Vuex config
  */
-
 const store = new Vuex.Store({
     state: {
         item:{}
@@ -46,6 +45,7 @@ Vue.component('breadcrumb', 	require('./components/Breadcrumbs.vue'));
 Vue.component('modal', 			require('./components/modal/Modal.vue'));
 Vue.component('linkmodal', 		require('./components/modal/Link.vue'));
 Vue.component('formulario',     require('./components/Formulario.vue'));
+Vue.component('alerta',         require('./components/Alerts.vue'));
 
 const app = new Vue({
     el: '#app',
